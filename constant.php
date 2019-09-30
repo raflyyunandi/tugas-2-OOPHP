@@ -16,4 +16,12 @@ class Coba {
 }
 
 echo Coba::NAMA;
+echo "<hr>";
+ 
+function coba() {
+	return __FUNCTION__;
+}
+
+echo coba();
+
  ?>
