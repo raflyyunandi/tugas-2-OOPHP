@@ -12,7 +12,15 @@ require_once 'App/init.php';
 
 // new Coba();
 
-new App\Service\User();
-echo "<hr>";
-new App\Produk\User();
+// new App\Service\User();
+// echo "<hr>";
+// new App\Produk\User();
+
+
+use App\Service\User as ServiceUser;
+use App\Service\User as ProdukUser;
+
+new ServiceUser();
+echo "<br>";
+new ProdukUser();
  ?>
