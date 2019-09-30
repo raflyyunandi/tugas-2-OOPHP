@@ -4,12 +4,17 @@
 // Komik dan Game
 
 class Produk {
-	public 	$judul = "judul",
-			$penulis = "penulis",
-			$penerbit = "penerbit",
-			$harga = 0 ;
+	// public 	$judul = "judul",
+	// 		$penulis = "penulis",
+	// 		$penerbit = "penerbit",
+	// 		$harga = 0 ;
+	public 	$judul ,
+			$penulis ,
+			$penerbit ,
+			$harga ;
 
-	public function __construct($judul, $penulis, $penerbit, $harga){
+	// public function __construct($judul, $penulis, $penerbit, $harga)
+			public function __construct($judul = "judul", $penulis = "penulis", $penerbit = "penerbit", $harga = 0){
 			$this->judul = $judul;
 			$this->penulis = $penulis;
 			$this->penerbit = $penerbit;
@@ -37,7 +42,7 @@ class Produk {
 
 $produk3 = new Produk ("Naruto", "Masashi Kisimoto", "Shounen Jump", 30000);
 $produk4 = new Produk ("Uncharted", "Neil Druckman", "Sony Computer", 75000);
-
+$produk5 = new Produk ("Dragon Ball");
 // $produk4 = new Produk();
 // $produk4 -> judul = "Uncharted";
 // $produk4 -> penulis = "Neil Druckman";
@@ -48,4 +53,6 @@ $produk4 = new Produk ("Uncharted", "Neil Druckman", "Sony Computer", 75000);
 echo "Komik : " . $produk3 -> getLabel();
 echo "<br>";
 echo "Game : " . $produk4 -> getLabel();
+echo "<br>";
+var_dump($produk5);
  ?>
