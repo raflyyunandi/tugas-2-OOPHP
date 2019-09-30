@@ -22,12 +22,19 @@ class Produk {
 	}		
 
 	public function getLabel(){
-		return "$this->penulis, $this->penerbit, $this->harga";
+		return "$this->penulis, $this->penerbit";
 	}	
 
 	// public function sayHello(){
 	// 	return "Hello World";
 	// }			
+}
+
+class CetakInfoProduk {
+	public function cetak ($produk){
+		$str = "{$produk->judul} | {$produk->getLabel()} (Rp.{$produk->harga})";
+		return $str;
+	}
 }
 
 // $produk1 = new Produk();
@@ -42,7 +49,7 @@ class Produk {
 
 $produk3 = new Produk ("Naruto", "Masashi Kisimoto", "Shounen Jump", 30000);
 $produk4 = new Produk ("Uncharted", "Neil Druckman", "Sony Computer", 75000);
-$produk5 = new Produk ("Dragon Ball");
+// $produk5 = new Produk ("Dragon Ball");
 // $produk4 = new Produk();
 // $produk4 -> judul = "Uncharted";
 // $produk4 -> penulis = "Neil Druckman";
@@ -54,5 +61,8 @@ echo "Komik : " . $produk3 -> getLabel();
 echo "<br>";
 echo "Game : " . $produk4 -> getLabel();
 echo "<br>";
-var_dump($produk5);
+// var_dump($produk5);
+echo "<br>";
+$cip3 = new CetakInfoProduk();
+echo $cip3->cetak($produk3);
  ?>
