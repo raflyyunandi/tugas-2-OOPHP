@@ -2,19 +2,23 @@
 
 // Jualan Produk
 // Komik dan Game
+interface InfoProduk {
+	public function getInfoLengkap();
+}
 
-abstract class Produk {
+	class Produk {
 	// 	public 	$judul = "judul",
 	// 		$penulis = "penulis",
 	// 		$penerbit = "penerbit",
 	// 		$harga = 0 ;
-	private 	$judul ,
+	protected 	$judul ,
 				$penulis ,
 				$harga ,
-				$penerbit;
+				$penerbit,
+				$diskon;
 
 	
-	protected 	$diskon;
+	 	
 			
 			// $jmlHal ,
 			// $lamaMain; 
@@ -72,19 +76,16 @@ abstract class Produk {
 	// }
 
 	// public function getInfoLengkap(){
-		abstract public function getInfoLengkap();
 
 		// $str = "{$this->tipe} : {$this->judul} | {$this->getLabel()} (Rp.{$this->harga})";
-		public function getInfo(){
-		$str = " {$this->judul} | {$this->getLabel()} (Rp.{$this->harga})";
+
 		// if ($this->tipe == "Komik") {
 		// 	$str .= " - {$this->jmlHal} Halaman.";
 		// } else if ($this->tipe == "Game") {
 		// 	$str .= " ~ {$this->lamaMain} Jam.";
 		// }
 		// return $str;
-		return $str;
-	}		
+	//abstract public function getInfo();
 
 }
 
@@ -95,7 +96,7 @@ abstract class Produk {
 // 	}
 // }
 
-class Komik extends Produk {
+class Komik extends Produk implements InfoProduk{
 	public $jmlHal;
 
 	public function __construct($judul = "judul", $penulis = "penulis", $penerbit = "penerbit", $harga = 0, $jmlHal = 0 ) {
@@ -112,6 +113,10 @@ class Komik extends Produk {
 		return $this->diskon;
 	}
 
+	public function getInfo(){
+		$str = " {$this->judul} | {$this->getLabel()} (Rp.{$this->harga})";
+	return $str;
+	}	
 
 	public function getInfoLengkap(){
 		// $str = "{$this->judul} | {$this->getLabel()} (Rp.{$this->harga}) - {$this->jmlHal} Halaman.";
@@ -120,7 +125,7 @@ class Komik extends Produk {
 	}
 }
 
-class Game extends Produk {
+class Game extends Produk implements InfoProduk {
 		public $lamaMain;
 
 		public function __construct($judul = "judul", $penulis = "penulis", $penerbit = "penerbit", $harga = 0, $lamaMain = 0 ) {
@@ -129,7 +134,10 @@ class Game extends Produk {
 
 	}
 
-
+	public function getInfo(){
+		$str = " {$this->judul} | {$this->getLabel()} (Rp.{$this->harga})";
+	return $str;
+	}	
 	public function getInfoLengkap(){
 		// $str = "{$this->judul} | {$this->getLabel()} (Rp.{$this->harga}) - {$this->jmlHal} Halaman.";
 		$str = "Game : " . $this->getInfo() . "- {$this->lamaMain} Jam.";
