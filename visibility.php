@@ -81,6 +81,11 @@ class Game extends Produk {
 		$this->lamaMain = $lamaMain;
 
 	}
+
+	public function getHarga(){
+		return $this->harga;
+	}
+
 	public function getInfoLengkap(){
 		// $str = "{$this->judul} | {$this->getLabel()} (Rp.{$this->harga}) - {$this->jmlHal} Halaman.";
 		$str = "Game : " . parent::getInfoLengkap() . "- {$this->lamaMain} Jam.";
@@ -128,5 +133,5 @@ echo "<br>";
 echo $produk4->getInfoLengkap();
 echo "<hr>";
 
-echo $produk3->harga;
+echo $produk4->getHarga();
  ?>
