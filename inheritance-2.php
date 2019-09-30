@@ -13,18 +13,18 @@ class Produk {
 			$penerbit ,
 			$harga ,
 			$jmlHal ,
-			$lamaMain, 
-			$tipe;
+			$lamaMain; 
+			// $tipe;
 
 	// public function __construct($judul, $penulis, $penerbit, $harga)
-			public function __construct($judul = "judul", $penulis = "penulis", $penerbit = "penerbit", $harga = 0, $jmlHal = 0, $lamaMain = 0, $tipe){
+			public function __construct($judul = "judul", $penulis = "penulis", $penerbit = "penerbit", $harga = 0, $jmlHal = 0, $lamaMain = 0){
 			$this->judul = $judul;
 			$this->penulis = $penulis;
 			$this->penerbit = $penerbit;
 			$this->harga = $harga;
 			$this->jmlHal = $jmlHal;
 			$this->lamaMain = $lamaMain;
-			$this->tipe = $tipe;
+			// $this->tipe = $tipe;
 	}		
 
 	public function getLabel(){
@@ -37,12 +37,12 @@ class Produk {
 
 	public function getInfoLengkap(){
 		$str = "{$this->tipe} : {$this->judul} | {$this->getLabel()} (Rp.{$this->harga})";
-		if ($this->tipe == "Komik") {
-			$str .= " - {$this->jmlHal} Halaman.";
-		} else if ($this->tipe == "Game") {
-			$str .= " ~ {$this->lamaMain} Jam.";
-		}
-		return $str;
+		// if ($this->tipe == "Komik") {
+		// 	$str .= " - {$this->jmlHal} Halaman.";
+		// } else if ($this->tipe == "Game") {
+		// 	$str .= " ~ {$this->lamaMain} Jam.";
+		// }
+		// return $str;
 	}		
 
 }
@@ -54,7 +54,19 @@ class CetakInfoProduk {
 	}
 }
 
+class Komik extends Produk {
+	public function getInfoLengkap(){
+		$str = "{$this->judul} | {$this->getLabel()} (Rp.{$this->harga}) - {$this->jmlHal} Halaman.";
+		return $str;
+	}
+}
 
+class Game extends Produk {
+	public function getInfoLengkap(){
+		$str = "{$this->judul} | {$this->getLabel()} (Rp.{$this->harga}) - {$this->lamaMain} Jam.";
+		return $str;
+	}
+}
 
 // $produk1 = new Produk();
 // $produk1 -> judul = "Naruto";
@@ -66,8 +78,8 @@ class CetakInfoProduk {
 // $produk3 -> penerbit = "Shonen Jump";
 // $produk3 -> harga = 90000;
 
-$produk3 = new Produk ("Naruto", "Masashi Kisimoto", "Shounen Jump", 30000, 100, 0, "Komik");
-$produk4 = new Produk ("Uncharted", "Neil Druckman", "Sony Computer", 75000, 0, 50, "Game");
+$produk3 = new Komik ("Naruto", "Masashi Kisimoto", "Shounen Jump", 30000, 100, 0);
+$produk4 = new Game ("Uncharted", "Neil Druckman", "Sony Computer", 75000, 0, 50);
 // $produk5 = new Produk ("Dragon Ball");
 // $produk4 = new Produk();
 // $produk4 -> judul = "Uncharted";
@@ -76,16 +88,16 @@ $produk4 = new Produk ("Uncharted", "Neil Druckman", "Sony Computer", 75000, 0, 
 // $produk4 -> harga = 75000;
 
 
-echo "Komik : " . $produk3 -> getLabel();
-echo "<br>";
-echo "Game : " . $produk4 -> getLabel();
-echo "<br>";
-// var_dump($produk5);
-echo "<br>";
-$cip3 = new CetakInfoProduk();
-echo $cip3->cetak($produk3);
+// echo "Komik : " . $produk3 -> getLabel();
+// echo "<br>";
+// echo "Game : " . $produk4 -> getLabel();
+// echo "<br>";
+// // var_dump($produk5);
+// echo "<br>";
+// $cip3 = new CetakInfoProduk();
+// echo $cip3->cetak($produk3);
 
-echo "<br>";
+// echo "<br>";
 echo $produk3->getInfoLengkap();
 echo "<br>";
 echo $produk4->getInfoLengkap();
