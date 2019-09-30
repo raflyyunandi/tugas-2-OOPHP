@@ -4,10 +4,10 @@
 // Komik dan Game
 
 class Produk {
-	public 	$judul,
-			$penulis,
-			$penerbit,
-			$harga;
+	public 	$judul = "judul",
+			$penulis = "penulis",
+			$penerbit = "penerbit",
+			$harga = 0 ;
 }
 
 $produk1 = new Produk();
