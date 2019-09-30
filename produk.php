@@ -11,7 +11,7 @@ class Produk {
 }
 
 $produk1 = new Produk();
-
+$produk1 -> judul = "Naruto";
 var_dump($produk1);
 
  ?>
