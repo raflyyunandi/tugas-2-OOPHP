@@ -4,16 +4,16 @@
 // Komik dan Game
 
 class Produk {
-	// public 	$judul = "judul",
+	// 	public 	$judul = "judul",
 	// 		$penulis = "penulis",
 	// 		$penerbit = "penerbit",
 	// 		$harga = 0 ;
 	public 	$judul ,
 			$penulis ,
 			$penerbit ,
-			$harga ,
-			$jmlHal ,
-			$lamaMain; 
+			$harga;
+			// $jmlHal ,
+			// $lamaMain; 
 			// $tipe;
 
 	// public function __construct($judul, $penulis, $penerbit, $harga)
@@ -36,36 +36,60 @@ class Produk {
 	// }
 
 	public function getInfoLengkap(){
-		$str = "{$this->tipe} : {$this->judul} | {$this->getLabel()} (Rp.{$this->harga})";
+		// $str = "{$this->tipe} : {$this->judul} | {$this->getLabel()} (Rp.{$this->harga})";
+		$str = " {$this->judul} | {$this->getLabel()} (Rp.{$this->harga})";
 		// if ($this->tipe == "Komik") {
 		// 	$str .= " - {$this->jmlHal} Halaman.";
 		// } else if ($this->tipe == "Game") {
 		// 	$str .= " ~ {$this->lamaMain} Jam.";
 		// }
 		// return $str;
+		return $str;
 	}		
 
 }
 
-class CetakInfoProduk {
-	public function cetak ($produk){
-		$str = "{$produk->judul} | {$produk->getLabel()} (Rp.{$produk->harga})";
-		return $str;
-	}
-}
+// class CetakInfoProduk {
+// 	public function cetak ($produk){
+// 		$str = "{$produk->judul} | {$produk->getLabel()} (Rp.{$produk->harga})";
+// 		return $str;
+// 	}
+// }
 
 class Komik extends Produk {
+	public $jmlHal;
+
+	public function __construct($judul = "judul", $penulis = "penulis", $penerbit = "penerbit", $harga = 0, $jmlHal = 0 ) {
+		parent::__construct ($judul, $penulis , $penerbit, $harga);
+		$this->jmlHal = $jmlHal;
+
+	}
+
 	public function getInfoLengkap(){
-		$str = "{$this->judul} | {$this->getLabel()} (Rp.{$this->harga}) - {$this->jmlHal} Halaman.";
+		// $str = "{$this->judul} | {$this->getLabel()} (Rp.{$this->harga}) - {$this->jmlHal} Halaman.";
+		$str = "Komik : " . parent::getInfoLengkap() . "- {$this->jmlHal} Halaman.";
 		return $str;
 	}
 }
 
 class Game extends Produk {
+		public $lamaMain;
+
+		public function __construct($judul = "judul", $penulis = "penulis", $penerbit = "penerbit", $harga = 0, $lamaMain = 0 ) {
+		parent::__construct ($judul, $penulis , $penerbit, $harga);
+		$this->lamaMain = $lamaMain;
+
+	}
 	public function getInfoLengkap(){
-		$str = "{$this->judul} | {$this->getLabel()} (Rp.{$this->harga}) - {$this->lamaMain} Jam.";
+		// $str = "{$this->judul} | {$this->getLabel()} (Rp.{$this->harga}) - {$this->jmlHal} Halaman.";
+		$str = "Game : " . parent::getInfoLengkap() . "- {$this->lamaMain} Jam.";
 		return $str;
 	}
+		// public function getInfoLengkap(){
+		// $str = "{$this->judul} | {$this->getLabel()} (Rp.{$this->harga}) - {$this->lamaMain} Jam.";
+		// $str = "Komik : " . parent::getInfoLengkap() . "- {$this->lamaMain} Jam.";
+	// 	return $str;
+	// }
 }
 
 // $produk1 = new Produk();
@@ -78,8 +102,8 @@ class Game extends Produk {
 // $produk3 -> penerbit = "Shonen Jump";
 // $produk3 -> harga = 90000;
 
-$produk3 = new Komik ("Naruto", "Masashi Kisimoto", "Shounen Jump", 30000, 100, 0);
-$produk4 = new Game ("Uncharted", "Neil Druckman", "Sony Computer", 75000, 0, 50);
+$produk3 = new Komik ("Naruto", "Masashi Kisimoto", "Shounen Jump", 30000, 100);
+$produk4 = new Game ("Uncharted", "Neil Druckman", "Sony Computer", 75000, 50);
 // $produk5 = new Produk ("Dragon Ball");
 // $produk4 = new Produk();
 // $produk4 -> judul = "Uncharted";
