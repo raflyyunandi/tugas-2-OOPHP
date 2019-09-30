@@ -12,7 +12,9 @@ class Produk {
 			$penulis ,
 			$penerbit;
 
-	protected $harga;		
+	
+	protected $diskon;
+	private $harga;		
 			// $jmlHal ,
 			// $lamaMain; 
 			// $tipe;
@@ -27,6 +29,11 @@ class Produk {
 			$this->lamaMain = $lamaMain;
 			// $this->tipe = $tipe;
 	}		
+
+
+	public function getHarga(){
+		return $this->harga - ($this->harga * $this->diskon / 100);
+	}
 
 	public function getLabel(){
 		return "$this->penulis, $this->penerbit";
@@ -66,6 +73,11 @@ class Komik extends Produk {
 
 	}
 
+	public function setDiskon ($diskon) {
+		$this->diskon = $diskon;
+	}
+
+
 	public function getInfoLengkap(){
 		// $str = "{$this->judul} | {$this->getLabel()} (Rp.{$this->harga}) - {$this->jmlHal} Halaman.";
 		$str = "Komik : " . parent::getInfoLengkap() . "- {$this->jmlHal} Halaman.";
@@ -82,9 +94,6 @@ class Game extends Produk {
 
 	}
 
-	public function getHarga(){
-		return $this->harga;
-	}
 
 	public function getInfoLengkap(){
 		// $str = "{$this->judul} | {$this->getLabel()} (Rp.{$this->harga}) - {$this->jmlHal} Halaman.";
@@ -133,5 +142,6 @@ echo "<br>";
 echo $produk4->getInfoLengkap();
 echo "<hr>";
 
-echo $produk4->getHarga();
+echo $produk3->setDiskon(10);
+echo $produk3->getHarga();
  ?>
