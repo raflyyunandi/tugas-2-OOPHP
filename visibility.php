@@ -10,8 +10,9 @@ class Produk {
 	// 		$harga = 0 ;
 	public 	$judul ,
 			$penulis ,
-			$penerbit ,
-			$harga;
+			$penerbit;
+
+	protected $harga;		
 			// $jmlHal ,
 			// $lamaMain; 
 			// $tipe;
@@ -125,4 +126,7 @@ $produk4 = new Game ("Uncharted", "Neil Druckman", "Sony Computer", 75000, 50);
 echo $produk3->getInfoLengkap();
 echo "<br>";
 echo $produk4->getInfoLengkap();
+echo "<hr>";
+
+echo $produk3->harga;
  ?>
