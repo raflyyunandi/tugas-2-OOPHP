@@ -15,10 +15,10 @@
 // echo ContohStatic::halo();
 
 class ContohStatic2 {
-	public $angka = 1;
+	public static $angka = 1;
 
 	public function halo(){
-		return "halo".$this->angka++ . " kali. <br>";
+		return "halo".self::$angka++ . " kali. <br>";
 
 	}
  
@@ -28,4 +28,10 @@ echo $obj->halo();
 echo $obj->halo();
 echo $obj->halo();
 
+echo "<hr>";
+
+$obj2 = new ContohStatic2;
+echo $obj2->halo();
+echo $obj2->halo();
+echo $obj2->halo();
  ?>
